@@ -1,10 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Main.scss';
 import Cage from './Cage/Cage';
 import CageName from './Cage/CageName';
 import mailLogo from './img/mail-logo.svg';
 
 export default function Main() {
+  const [animals, setAnimal] = useState([
+    {
+      id: 1,
+      name: 'Мотильда',
+      gender: 'Ж',
+      weight: 800,
+      height: 4,
+      color: 'Стандарт',
+      diet: 'Растительная',
+      temper: 'Кокетка',
+    },
+    {
+      id: 2,
+      name: 'Костя',
+      gender: 'М',
+      weight: 600,
+      height: 3,
+      color: 'Белый',
+      diet: 'Черная',
+      temper: 'Говнюк',
+    },
+    {
+      id: 3,
+      name: 'Слава',
+      gender: 'М',
+      weight: 700,
+      height: 3.8,
+      color: 'В пятнышку',
+      diet: 'Королевская',
+      temper: 'Странный',
+    },
+    {
+      id: 4,
+      name: 'Ленин',
+      gender: 'М',
+      weight: 700,
+      height: 3.8,
+      color: 'В пятнышку',
+      diet: 'Королевская',
+      temper: 'Странный',
+    }
+  ]);
+
   return (
     <div className="Main">
       <div className="Main__header">
@@ -37,7 +80,7 @@ export default function Main() {
           <i className="fas fa-plus"></i>
         </div>
       </div>
-      <Cage />
+      <Cage animals={animals} />
     </div>
   );
 }
