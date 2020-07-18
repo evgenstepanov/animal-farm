@@ -2,7 +2,7 @@ import React from 'react';
 import './Giraffe.scss';
 import Motilda from '../img/Motilda.png';
 
-export default function Giraffe(props) {
+export default function GiraffeEdit(props) {
   return (
     <li className="Giraffe">
       <div className="edit">

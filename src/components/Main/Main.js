@@ -38,14 +38,34 @@ export default function Main() {
     },
     {
       id: 4,
-      name: 'Ленин',
+      name: 'Ленин sdfsdfsd',
       gender: 'М',
       weight: 700,
       height: 3.8,
       color: 'В пятнышку',
       diet: 'Королевская',
       temper: 'Странный',
-    }
+    },
+    {
+      id: 5,
+      name: 'Костя',
+      gender: 'М',
+      weight: 600,
+      height: 3,
+      color: 'Белый',
+      diet: 'Черная',
+      temper: 'Говнюк',
+    },
+    {
+      id: 6,
+      name: 'Костя',
+      gender: 'М',
+      weight: 600,
+      height: 3,
+      color: 'Белый',
+      diet: 'Черная',
+      temper: 'Говнюк',
+    },
   ]);
 
   return (
@@ -73,7 +93,6 @@ export default function Main() {
           <div className="mail contacts__mail">hello@giraffe.com</div>
         </div>
       </div>
-
       <div className="cage-header">
         <div className="cage-header__title">Жирафы</div>
         <div className="cage-header__add">
