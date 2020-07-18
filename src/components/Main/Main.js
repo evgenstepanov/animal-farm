@@ -7,7 +7,7 @@ import mailLogo from './img/mail-logo.svg';
 export default function Main() {
   const [animals, setAnimal] = useState([
     {
-      id: 1,
+      id: 'ммм',
       name: 'Мотильда',
       gender: 'Ж',
       weight: 800,
@@ -17,7 +17,7 @@ export default function Main() {
       temper: 'Кокетка',
     },
     {
-      id: 2,
+      id: 'ккк',
       name: 'Костя',
       gender: 'М',
       weight: 600,
@@ -27,38 +27,8 @@ export default function Main() {
       temper: 'Говнюк',
     },
     {
-      id: 3,
-      name: 'Слава',
-      gender: 'М',
-      weight: 700,
-      height: 3.8,
-      color: 'В пятнышку',
-      diet: 'Королевская',
-      temper: 'Странный',
-    },
-    {
-      id: 4,
-      name: 'Ленин sdfsdfsd',
-      gender: 'М',
-      weight: 700,
-      height: 3.8,
-      color: 'В пятнышку',
-      diet: 'Королевская',
-      temper: 'Странный',
-    },
-    {
-      id: 5,
-      name: 'Костя',
-      gender: 'М',
-      weight: 600,
-      height: 3,
-      color: 'Белый',
-      diet: 'Черная',
-      temper: 'Говнюк',
-    },
-    {
-      id: 6,
-      name: 'Костя',
+      id: 'ббб',
+      name: 'Ботя',
       gender: 'М',
       weight: 600,
       height: 3,
@@ -67,6 +37,19 @@ export default function Main() {
       temper: 'Говнюк',
     },
   ]);
+
+  function handlerDeleteCard(id) {
+    let deleteItem;
+    animals.forEach((item, index) => {
+      if (item.id === id) deleteItem = index;
+    });
+    let arr = animals.slice();
+    console.log(arr);
+    arr.splice(deleteItem, 1)
+    console.log(arr);
+    setAnimal(arr);
+    console.log(animals);
+  }
 
   return (
     <div className="Main">
@@ -99,7 +82,7 @@ export default function Main() {
           <i className="fas fa-plus"></i>
         </div>
       </div>
-      <Cage animals={animals} />
+      <Cage animals={animals} click={handlerDeleteCard} />
     </div>
   );
 }
