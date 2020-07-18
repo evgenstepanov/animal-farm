@@ -1,0 +1,28 @@
+.logo{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.footer__logo{
+  margin-bottom: 55px;
+}
+.logo__img{
+  display: block;
+  margin-right: 9px;
+}
+.logo__title{
+  display: flex;
+  flex-direction: column;
+}
+.logo__title-text{
+  font-size: 10px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.logo__subtitle{
+  font-size: 10px;
+  color: #fff;
+  font-weight: 100;
+}
