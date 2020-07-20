@@ -7,7 +7,8 @@ import mailLogo from './img/mail-logo.svg';
 export default function Main() {
   const [animals, setAnimal] = useState([
     {
-      id: 'ммм',
+      editIsOpen: false,
+      id: 1,
       name: 'Мотильда',
       gender: 'Ж',
       weight: 800,
@@ -17,38 +18,37 @@ export default function Main() {
       temper: 'Кокетка',
     },
     {
-      id: 'ккк',
-      name: 'Костя',
+      editIsOpen: false,
+      id: 2,
+      name: 'Вольдемар',
       gender: 'М',
       weight: 600,
       height: 3,
       color: 'Белый',
       diet: 'Черная',
-      temper: 'Говнюк',
-    },
-    {
-      id: 'ббб',
-      name: 'Ботя',
-      gender: 'М',
-      weight: 600,
-      height: 3,
-      color: 'Белый',
-      diet: 'Черная',
-      temper: 'Говнюк',
+      temper: 'Страсть',
     },
   ]);
 
   function handlerDeleteCard(id) {
-    let deleteItem;
+    let deleteIndex;
     animals.forEach((item, index) => {
-      if (item.id === id) deleteItem = index;
+      if (item.id === id) deleteIndex = index;
     });
     let arr = animals.slice();
-    console.log(arr);
-    arr.splice(deleteItem, 1)
-    console.log(arr);
+    arr.splice(deleteIndex, 1);
     setAnimal(arr);
-    console.log(animals);
+  }
+
+  function openEditButton(id) {
+    let arr = animals.slice().map((item) =>
+      item.id === id
+        ? Object.assign({}, item, {
+            editIsOpen: !item.editIsOpen,
+          })
+        : item
+    );
+    setAnimal(arr)
   }
 
   return (
@@ -82,7 +82,11 @@ export default function Main() {
           <i className="fas fa-plus"></i>
         </div>
       </div>
-      <Cage animals={animals} click={handlerDeleteCard} />
+      <Cage
+        animals={animals}
+        openEditButton={openEditButton}
+        click={handlerDeleteCard}
+      />
     </div>
   );
 }

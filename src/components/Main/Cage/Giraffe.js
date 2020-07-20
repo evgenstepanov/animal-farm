@@ -2,11 +2,17 @@ import React from 'react';
 import './Giraffe.scss';
 import Motilda from '../img/Motilda.png';
 import GiraffeEditBtn from './GiraffeEditBtn';
+import EditMenu from './EditMenu';
 
 export default function Giraffe(props) {
   return (
     <li className="Giraffe">
-      <GiraffeEditBtn id={props.id} click={props.click} />
+      <GiraffeEditBtn
+        id={props.id}
+        click={props.click}
+        openEditButton={props.openEditButton}
+      />
+      <EditMenu editIsOpen={props.editIsOpen} />
       <img className="foto" src={Motilda} alt="Motilda" />
       <h2 className="name">{props.name}</h2>
       <div className="icons">
