@@ -30,7 +30,7 @@ export default function Main() {
     },
   ]);
 
-  function handlerDeleteCard(id) {
+  function deleteCard(id) {
     let deleteIndex;
     animals.forEach((item, index) => {
       if (item.id === id) deleteIndex = index;
@@ -50,6 +50,8 @@ export default function Main() {
     );
     setAnimal(arr)
   }
+
+
 
   return (
     <div className="Main">
@@ -85,7 +87,7 @@ export default function Main() {
       <Cage
         animals={animals}
         openEditButton={openEditButton}
-        click={handlerDeleteCard}
+        deleteCard={deleteCard}
       />
     </div>
   );

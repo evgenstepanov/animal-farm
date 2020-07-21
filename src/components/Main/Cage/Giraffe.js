@@ -7,12 +7,12 @@ import EditMenu from './EditMenu';
 export default function Giraffe(props) {
   return (
     <li className="Giraffe">
-      <GiraffeEditBtn
+      <GiraffeEditBtn id={props.id} openEditButton={props.openEditButton} />
+      <EditMenu
         id={props.id}
-        click={props.click}
-        openEditButton={props.openEditButton}
+        editIsOpen={props.editIsOpen}
+        deleteCard={props.deleteCard}
       />
-      <EditMenu editIsOpen={props.editIsOpen} />
       <img className="foto" src={Motilda} alt="Motilda" />
       <h2 className="name">{props.name}</h2>
       <div className="icons">
