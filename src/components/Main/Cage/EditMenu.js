@@ -7,7 +7,6 @@ export default function EditMenu(props) {
 
   useEffect(() => {
     buttonOnFocus.current.focus();
-    console.log('dd');
   });
 
   if (props.toggleMenu) {
