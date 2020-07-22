@@ -1,18 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Giraffe.scss';
 import Motilda from '../img/Motilda.png';
-import GiraffeEditBtn from './GiraffeEditBtn';
+// import GiraffeEditBtn from './GiraffeEditBtn';
 import EditMenu from './EditMenu';
 
 export default function Giraffe(props) {
+  const [toggleMenu, SetToggleMenu] = useState(false);
+
+  function toggleEditMenu() {
+    SetToggleMenu((toggleMenu) => !toggleMenu);
+  }
+
+  let menu;
+  if (toggleMenu)
+    menu = (
+      <EditMenu
+        state={props.state}
+        setState={props.setState}
+        toggleMenu={toggleMenu}
+        deleteCard={props.deleteCard}
+        id={props.id}
+      />
+    );
+
   return (
     <li className="Giraffe">
-      <GiraffeEditBtn id={props.id} openEditButton={props.openEditButton} />
-      <EditMenu
-        id={props.id}
-        editIsOpen={props.editIsOpen}
-        deleteCard={props.deleteCard}
-      />
+      <div className="edit" onClick={toggleEditMenu}>
+        <i className="fas fa-ellipsis-h"></i>
+      </div>
+      {menu}
       <img className="foto" src={Motilda} alt="Motilda" />
       <h2 className="name">{props.name}</h2>
       <div className="icons">

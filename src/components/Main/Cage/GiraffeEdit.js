@@ -1,15 +1,15 @@
 import React from 'react';
-import './Giraffe.scss';
+import './GiraffeEdit.scss';
 import Motilda from '../img/Motilda.png';
 
 export default function GiraffeEdit(props) {
   return (
-    <li className="Giraffe">
+    <li className="Giraffe-edit">
       <div className="edit">
         <i className="fas fa-ellipsis-h"></i>
       </div>
-      <img className="foto" src={Motilda} alt="Motilda" />
-      <h2 className="name">{props.name}</h2>
+      <img className="Giraffe-edit__foto" src={Motilda} alt="Motilda" />
+      <input type='text' className="Giraffe-edit__name" placeholder='Имя'>{props.name}</input>
       <div className="icons">
         <div className="icons__item">
           <i className="fas fa-venus-mars"></i>
