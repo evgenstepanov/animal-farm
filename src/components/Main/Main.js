@@ -5,9 +5,8 @@ import CageName from './Cage/CageName';
 import mailLogo from './img/mail-logo.svg';
 
 export default function Main() {
-  const [animals, setAnimal] = useState([
+  const [state, setState] = useState([
     {
-      editIsOpen: false,
       id: 1,
       name: 'Мотильда',
       gender: 'Ж',
@@ -18,7 +17,6 @@ export default function Main() {
       temper: 'Кокетка',
     },
     {
-      editIsOpen: false,
       id: 2,
       name: 'Вольдемар',
       gender: 'М',
@@ -29,29 +27,6 @@ export default function Main() {
       temper: 'Страсть',
     },
   ]);
-
-  function deleteCard(id) {
-    let deleteIndex;
-    animals.forEach((item, index) => {
-      if (item.id === id) deleteIndex = index;
-    });
-    let arr = animals.slice();
-    arr.splice(deleteIndex, 1);
-    setAnimal(arr);
-  }
-
-  function openEditButton(id) {
-    let arr = animals.slice().map((item) =>
-      item.id === id
-        ? Object.assign({}, item, {
-            editIsOpen: !item.editIsOpen,
-          })
-        : item
-    );
-    setAnimal(arr)
-  }
-
-
 
   return (
     <div className="Main">
@@ -84,11 +59,7 @@ export default function Main() {
           <i className="fas fa-plus"></i>
         </div>
       </div>
-      <Cage
-        animals={animals}
-        openEditButton={openEditButton}
-        deleteCard={deleteCard}
-      />
+      <Cage state={state} setState={setState} />
     </div>
   );
 }
