@@ -9,14 +9,22 @@ export default function EditMenu(props) {
     buttonOnFocus.current.focus();
   });
 
+  function editCard() {
+    props.SetEdit(!props.edit);
+  }
+
   if (props.toggleMenu) {
     return (
       <div className="EditMenu">
-        <button className="button EditMenu__edit" ref={buttonOnFocus}>
+        <button
+          className="button EditMenu__edit"
+          onClick={editCard}
+          ref={buttonOnFocus}
+        >
           <i className="EditMenu__icon fas fa-pencil-alt"></i>Редактировать
         </button>
         <button
-          className="button EditMenu__delete" 
+          className="button EditMenu__delete"
           onClick={() => {
             props.deleteCard(props.id);
           }}

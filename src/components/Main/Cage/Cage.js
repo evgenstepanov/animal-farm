@@ -1,6 +1,5 @@
 import React from 'react';
 import Giraffe from './Giraffe';
-import GiraffeEdit from './GiraffeEdit';
 import './Cage.scss';
 
 export default function Cage({ state, setState }) {
@@ -32,9 +31,6 @@ export default function Cage({ state, setState }) {
           deleteCard={deleteCard}
         />
       ))}
-      <li>
-        <GiraffeEdit />
-      </li>
     </ul>
   );
 }

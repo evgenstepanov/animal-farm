@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import './Giraffe.scss';
 import Motilda from '../img/Motilda.png';
-// import GiraffeEditBtn from './GiraffeEditBtn';
+import GiraffeEdit from './GiraffeEdit';
 import EditMenu from './EditMenu';
 
 export default function Giraffe(props) {
   const [toggleMenu, SetToggleMenu] = useState(false);
+  const [edit, SetEdit] = useState(false);
 
   function toggleEditMenu() {
     SetToggleMenu((toggleMenu) => !toggleMenu);
@@ -15,14 +16,30 @@ export default function Giraffe(props) {
   if (toggleMenu)
     menu = (
       <EditMenu
-        state={props.state}
-        setState={props.setState}
         toggleMenu={toggleMenu}
         deleteCard={props.deleteCard}
         id={props.id}
+        edit={edit}
+        SetEdit={SetEdit}
       />
     );
 
+  if (edit)
+    return (
+      <GiraffeEdit
+        key={props.id}
+        id={props.id}
+        name={props.name}
+        gender={props.gender}
+        weight={props.weight}
+        height={props.height}
+        color={props.color}
+        diet={props.diet}
+        temper={props.temper}
+        state={props.state}
+        setState={props.setState}
+      />
+    );
   return (
     <li className="Giraffe">
       <div className="edit" onClick={toggleEditMenu}>
