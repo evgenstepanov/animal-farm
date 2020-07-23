@@ -9,7 +9,7 @@ export default function GiraffeEdit(props) {
         <i className="fas fa-ellipsis-h"></i>
       </div>
       <img className="Giraffe-edit__foto" src={Motilda} alt="Motilda" />
-      <input type='text' className="Giraffe-edit__name" placeholder='Имя'>{props.name}</input>
+      <input type="text" className="Giraffe-edit__name" value="Волера" />
       <div className="icons">
         <div className="icons__item">
           <i className="fas fa-venus-mars"></i>
@@ -21,31 +21,36 @@ export default function GiraffeEdit(props) {
           <i className="fas fa-ruler-vertical"></i>
         </div>
       </div>
-      <div className="features">
-        <div className="features__item features__venus">{props.gender}</div>
-        <div className="features__item features__scale">{props.weight}</div>
-        <div className="features__item features__ruler">{props.height}</div>
+      <div className="features-input">
+        <input type="text" className="features-input__item" value="М" />
+        <input type="text" className="features-input__item" value="600" />
+        <input type="text" className="features-input__item" value="3" />
       </div>
       <div className="features-line">
         <div className="features-line__item">
           <span className="features-line__type">
             <strong>Цвет: </strong>
           </span>
-          <span className="features-line__value">{props.color}</span>
+          <input type="text" className="Giraffe-edit__line" value="Белый" />
         </div>
         <div className="features-line__item">
           <span className="features-line__type">
             <strong>Диета: </strong>
           </span>
-          <span className="features-line__value">{props.diet}</span>
+          <input type="text" className="Giraffe-edit__line" value="Черная" />
         </div>
         <div className="features-line__item features-line__item--last">
           <span className="features-line__type">
             <strong>Характер: </strong>
           </span>
-          <span className="features-line__value">{props.temper}</span>
+          <input type="text" className="Giraffe-edit__line" value="Страсть" />
         </div>
       </div>
+      <input
+        type="button"
+        className="Giraffe-edit__btn-save"
+        value="Сохранить"
+      />
     </li>
   );
 }
