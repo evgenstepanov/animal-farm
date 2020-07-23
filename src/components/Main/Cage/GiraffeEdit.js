@@ -13,10 +13,28 @@ export default function GiraffeEdit(props) {
     temper: props.temper,
   });
 
-  function handlerInput() {
-    SetInput();
+  function handlerName(e) {
+    SetInput(Object.assign({}, input, { name: e.target.value }));
   }
-  return (
+  function handlerGender(e) {
+    SetInput(Object.assign({}, input, { gender: e.target.value }));
+  }
+  function handlerWeight(e) {
+    SetInput(Object.assign({}, input, { weight: e.target.value }));
+  }
+  function handlerHeight(e) {
+    SetInput(Object.assign({}, input, { height: e.target.value }));
+  }
+  function handlerColor(e) {
+    SetInput(Object.assign({}, input, { color: e.target.value }));
+  }
+  function handlerDiet(e) {
+    SetInput(Object.assign({}, input, { diet: e.target.value }));
+  }
+  function handlerTemper(e) {
+    SetInput(Object.assign({}, input, { temper: e.target.value }));
+  }
+    return (
     <li className="Giraffe-edit">
       <div className="edit">
         <i className="fas fa-ellipsis-h"></i>
@@ -26,7 +44,7 @@ export default function GiraffeEdit(props) {
         type="text"
         className="Giraffe-edit__name"
         value={input.name}
-        onChange={handlerInput}
+        onChange={handlerName}
       />
       <div className="icons">
         <div className="icons__item">
@@ -42,21 +60,21 @@ export default function GiraffeEdit(props) {
       <div className="features-input">
         <input
           type="text"
-          className="features-input__item"
+          className="features-input__item gender"
           value={input.gender}
-          onChange={handlerInput}
+          onChange={handlerGender}
         />
         <input
           type="text"
-          className="features-input__item"
+          className="features-input__item "
           value={input.weight}
-          onChange={handlerInput}
+          onChange={handlerWeight}
         />
         <input
           type="text"
           className="features-input__item"
           value={input.height}
-          onChange={handlerInput}
+          onChange={handlerHeight}
         />
       </div>
       <div className="Giraffe-Edit__features-line">
@@ -68,7 +86,7 @@ export default function GiraffeEdit(props) {
             type="text"
             className="Giraffe-edit__line"
             value={input.color}
-            onChange={handlerInput}
+            onChange={handlerColor}
           />
         </div>
         <div className="Giraffe-Edit__features-line-item">
@@ -79,7 +97,7 @@ export default function GiraffeEdit(props) {
             type="text"
             className="Giraffe-edit__line"
             value={input.diet}
-            onChange={handlerInput}
+            onChange={handlerDiet}
           />
         </div>
         <div className="Giraffe-Edit__features-line-item Giraffe-Edit__features-line-item--last">
@@ -90,7 +108,7 @@ export default function GiraffeEdit(props) {
             type="text"
             className="Giraffe-edit__line"
             value={input.temper}
-            onChange={handlerInput}
+            onChange={handlerTemper}
           />
         </div>
       </div>

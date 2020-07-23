@@ -2,7 +2,7 @@
   width: 80%;
   background-color: #fff;
   border-radius: 35px;
-  padding: 16px 50px;
+  padding: 16px 30px;
 }
 .Main__header {
   display: flex;
@@ -10,6 +10,7 @@
   align-items: center;
   position: relative;
   padding-bottom: 7px;
+  margin-left: 20px;
   margin-bottom: 36px;
 }
 .Main__header:after {
@@ -47,6 +48,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 6px;
+  padding-left: 20px;
 }
 .cage-header__title {
   color: #567354;
