@@ -10,7 +10,8 @@ export default function EditMenu(props) {
   });
 
   function editCard() {
-    props.SetEdit(!props.edit);
+    props.setEdit(!props.edit);
+    props.setToggleMenu(!props.toggleMenu);
   }
 
   if (props.toggleMenu) {

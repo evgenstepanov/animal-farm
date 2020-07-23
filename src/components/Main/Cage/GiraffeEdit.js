@@ -34,7 +34,19 @@ export default function GiraffeEdit(props) {
   function handlerTemper(e) {
     SetInput(Object.assign({}, input, { temper: e.target.value }));
   }
-    return (
+
+  function saveChanges() {
+    let arr = props.state.slice().map((i) => {
+      if (i.id === props.id) {
+        return Object.assign({}, i, input);
+      } else return i;
+    });
+    console.log(arr);
+    props.setEdit(false);
+    props.setState(arr);
+  }
+
+  return (
     <li className="Giraffe-edit">
       <div className="edit">
         <i className="fas fa-ellipsis-h"></i>
@@ -116,6 +128,7 @@ export default function GiraffeEdit(props) {
         type="button"
         className="Giraffe-edit__btn-save"
         value="Сохранить"
+        onClick={saveChanges}
       />
     </li>
   );

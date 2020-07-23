@@ -5,11 +5,11 @@ import GiraffeEdit from './GiraffeEdit';
 import EditMenu from './EditMenu';
 
 export default function Giraffe(props) {
-  const [toggleMenu, SetToggleMenu] = useState(false);
-  const [edit, SetEdit] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState(false);
+  const [edit, setEdit] = useState(false);
 
   function toggleEditMenu() {
-    SetToggleMenu((toggleMenu) => !toggleMenu);
+    setToggleMenu((toggleMenu) => !toggleMenu);
   }
 
   let menu;
@@ -17,10 +17,11 @@ export default function Giraffe(props) {
     menu = (
       <EditMenu
         toggleMenu={toggleMenu}
+        setToggleMenu={setToggleMenu}
         deleteCard={props.deleteCard}
         id={props.id}
         edit={edit}
-        SetEdit={SetEdit}
+        setEdit={setEdit}
       />
     );
 
@@ -38,6 +39,8 @@ export default function Giraffe(props) {
         temper={props.temper}
         state={props.state}
         setState={props.setState}
+        edit={edit}
+        setEdit={setEdit}
       />
     );
   return (
