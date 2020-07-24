@@ -13,26 +13,37 @@ export default function GiraffeEdit(props) {
     temper: props.temper,
   });
 
-  function handlerName(e) {
-    SetInput(Object.assign({}, input, { name: e.target.value }));
+  function combineState(name, value) {
+    SetInput(Object.assign({}, input, { [name]: value }));
   }
-  function handlerGender(e) {
-    SetInput(Object.assign({}, input, { gender: e.target.value }));
-  }
-  function handlerWeight(e) {
-    SetInput(Object.assign({}, input, { weight: e.target.value }));
-  }
-  function handlerHeight(e) {
-    SetInput(Object.assign({}, input, { height: e.target.value }));
-  }
-  function handlerColor(e) {
-    SetInput(Object.assign({}, input, { color: e.target.value }));
-  }
-  function handlerDiet(e) {
-    SetInput(Object.assign({}, input, { diet: e.target.value }));
-  }
-  function handlerTemper(e) {
-    SetInput(Object.assign({}, input, { temper: e.target.value }));
+
+  function handlerInput(e) {
+    const target = e.target;
+    switch (target.name) {
+      case 'name':
+        combineState(target.name, target.value);
+        break;
+      case 'gender':
+        combineState(target.name, target.value);
+        break;
+      case 'weight':
+        combineState(target.name, target.value);
+        break;
+      case 'height':
+        combineState(target.name, target.value);
+        break;
+      case 'color':
+        combineState(target.name, target.value);
+        break;
+      case 'diet':
+        combineState(target.name, target.value);
+        break;
+      case 'temper':
+        combineState(target.name, target.value);
+        break;
+      default:
+        break;
+    }
   }
 
   function saveChanges() {
@@ -53,10 +64,11 @@ export default function GiraffeEdit(props) {
       </div>
       <img className="Giraffe-edit__foto" src={Motilda} alt="Motilda" />
       <input
+        name="name"
         type="text"
         className="Giraffe-edit__name"
         value={input.name}
-        onChange={handlerName}
+        onChange={handlerInput}
       />
       <div className="icons">
         <div className="icons__item">
@@ -71,22 +83,25 @@ export default function GiraffeEdit(props) {
       </div>
       <div className="features-input">
         <input
+          name="gender"
           type="text"
           className="features-input__item gender"
           value={input.gender}
-          onChange={handlerGender}
+          onChange={handlerInput}
         />
         <input
+          name="weight"
           type="text"
           className="features-input__item "
           value={input.weight}
-          onChange={handlerWeight}
+          onChange={handlerInput}
         />
         <input
+          name="height"
           type="text"
           className="features-input__item"
           value={input.height}
-          onChange={handlerHeight}
+          onChange={handlerInput}
         />
       </div>
       <div className="Giraffe-Edit__features-line">
@@ -95,10 +110,11 @@ export default function GiraffeEdit(props) {
             <strong>Цвет: </strong>
           </span>
           <input
+            name="color"
             type="text"
             className="Giraffe-edit__line"
             value={input.color}
-            onChange={handlerColor}
+            onChange={handlerInput}
           />
         </div>
         <div className="Giraffe-Edit__features-line-item">
@@ -106,10 +122,11 @@ export default function GiraffeEdit(props) {
             <strong>Диета: </strong>
           </span>
           <input
+            name="diet"
             type="text"
             className="Giraffe-edit__line"
             value={input.diet}
-            onChange={handlerDiet}
+            onChange={handlerInput}
           />
         </div>
         <div className="Giraffe-Edit__features-line-item Giraffe-Edit__features-line-item--last">
@@ -117,10 +134,11 @@ export default function GiraffeEdit(props) {
             <strong>Характер: </strong>
           </span>
           <input
+            name="temper"
             type="text"
             className="Giraffe-edit__line"
             value={input.temper}
-            onChange={handlerTemper}
+            onChange={handlerInput}
           />
         </div>
       </div>
