@@ -7,7 +7,7 @@ import mailLogo from './img/mail-logo.svg';
 export default function Main() {
   const [state, setState] = useState([
     {
-      id: 1,
+      id: makeId(),
       name: 'Мотильда',
       gender: 'Ж',
       weight: 800,
@@ -17,7 +17,27 @@ export default function Main() {
       temper: 'Кокетка',
     },
     {
-      id: 2,
+      id: makeId(),
+      name: 'Вольдемар',
+      gender: 'М',
+      weight: 600,
+      height: 3,
+      color: 'Белый',
+      diet: 'Черная',
+      temper: 'Страсть',
+    },
+    {
+      id: makeId(),
+      name: 'Вольдемар',
+      gender: 'М',
+      weight: 600,
+      height: 3,
+      color: 'Белый',
+      diet: 'Черная',
+      temper: 'Страсть',
+    },
+    {
+      id: makeId(),
       name: 'Вольдемар',
       gender: 'М',
       weight: 600,
@@ -27,6 +47,27 @@ export default function Main() {
       temper: 'Страсть',
     },
   ]);
+
+  function makeId() {
+    return ~~(Math.random() * 10000);
+  }
+
+  function addNewItem() {
+    let newCard = {
+      id: makeId(),
+      name: 'Имя',
+      gender: '-',
+      weight: '-',
+      height: '-',
+      color: '',
+      diet: '',
+      temper: '',
+    };
+
+    let arr = state.slice();
+    arr.unshift(newCard);
+    setState(arr);
+  }
 
   return (
     <div className="Main">
@@ -55,7 +96,7 @@ export default function Main() {
       </div>
       <div className="cage-header">
         <div className="cage-header__title">Жирафы</div>
-        <div className="cage-header__add">
+        <div className="cage-header__add" onClick={addNewItem}>
           <i className="fas fa-plus"></i>
         </div>
       </div>

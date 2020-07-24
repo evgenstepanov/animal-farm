@@ -3,7 +3,7 @@ import './GiraffeEdit.scss';
 import Motilda from '../img/Motilda.png';
 
 export default function GiraffeEdit(props) {
-  const [input, SetInput] = useState({
+  const [input, setInput] = useState({
     name: props.name,
     gender: props.gender,
     weight: props.weight,
@@ -14,7 +14,7 @@ export default function GiraffeEdit(props) {
   });
 
   function combineState(name, value) {
-    SetInput(Object.assign({}, input, { [name]: value }));
+    setInput(Object.assign({}, input, { [name]: value }));
   }
 
   function handlerInput(e) {
