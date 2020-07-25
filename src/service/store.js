@@ -12,6 +12,8 @@ export default ({ children }) => {
       color: 'Стандарт',
       diet: 'Растительная',
       temper: 'Кокетка',
+      menuIsOpen: false,
+      editMode: false,
     },
     {
       id: 2,
@@ -22,6 +24,8 @@ export default ({ children }) => {
       color: 'Белый',
       diet: 'Букетная',
       temper: 'Страсть',
+      menuIsOpen: false,
+      editMode: false,
     },
   ];
 
