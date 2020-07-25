@@ -20,12 +20,16 @@ export default function Main() {
       color: '',
       diet: '',
       temper: '',
+      menuIsOpen: false,
+      editMode: true,
     };
     setState([newCard, ...state]);
   }
+
   function makeId() {
     return ~~(Math.random() * 10000);
   }
+
   return (
     <div className="Main">
       <div className="Main__header">
