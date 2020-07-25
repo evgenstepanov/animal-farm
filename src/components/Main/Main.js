@@ -63,10 +63,7 @@ export default function Main() {
       diet: '',
       temper: '',
     };
-
-    let arr = state.slice();
-    arr.unshift(newCard);
-    setState(arr);
+    setState([newCard, ...state]);
   }
 
   return (
