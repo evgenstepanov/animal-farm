@@ -1,17 +1,12 @@
 import React from 'react';
 import Giraffe from './Giraffe';
 import './Cage.scss';
+import { StoreContext } from '../../service/store';
 
-export default function Cage({ state, setState }) {
-  function deleteCard(id) {
-    let deleteIndex;
-    state.forEach((item, index) => {
-      if (item.id === id) deleteIndex = index;
-    });
-    let arr = state.slice();
-    arr.splice(deleteIndex, 1);
-    setState(arr);
-  }
+export default function Cage() {
+  const {
+    state: [state],
+  } = React.useContext(StoreContext);
 
   return (
     <ul className="Cage">
@@ -26,9 +21,6 @@ export default function Cage({ state, setState }) {
           color={item.color}
           diet={item.diet}
           temper={item.temper}
-          state={state}
-          setState={setState}
-          deleteCard={deleteCard}
         />
       ))}
     </ul>

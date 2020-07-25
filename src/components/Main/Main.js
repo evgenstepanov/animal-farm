@@ -1,56 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Main.scss';
-import Cage from './Cage/Cage';
-import CageName from './Cage/CageName';
-import mailLogo from './img/mail-logo.svg';
+import Cage from './Cage';
+import CageName from './CageName';
+import { StoreContext } from '../../service/store';
+import mailLogo from '../../img/mail-logo.svg';
 
 export default function Main() {
-  const [state, setState] = useState([
-    {
-      id: makeId(),
-      name: 'Мотильда',
-      gender: 'Ж',
-      weight: 800,
-      height: 4,
-      color: 'Стандарт',
-      diet: 'Растительная',
-      temper: 'Кокетка',
-    },
-    {
-      id: makeId(),
-      name: 'Вольдемар',
-      gender: 'М',
-      weight: 600,
-      height: 3,
-      color: 'Белый',
-      diet: 'Черная',
-      temper: 'Страсть',
-    },
-    {
-      id: makeId(),
-      name: 'Вольдемар',
-      gender: 'М',
-      weight: 600,
-      height: 3,
-      color: 'Белый',
-      diet: 'Черная',
-      temper: 'Страсть',
-    },
-    {
-      id: makeId(),
-      name: 'Вольдемар',
-      gender: 'М',
-      weight: 600,
-      height: 3,
-      color: 'Белый',
-      diet: 'Черная',
-      temper: 'Страсть',
-    },
-  ]);
-
-  function makeId() {
-    return ~~(Math.random() * 10000);
-  }
+  const {
+    state: [state, setState],
+  } = React.useContext(StoreContext);
 
   function addNewItem() {
     let newCard = {
@@ -65,7 +23,9 @@ export default function Main() {
     };
     setState([newCard, ...state]);
   }
-
+  function makeId() {
+    return ~~(Math.random() * 10000);
+  }
   return (
     <div className="Main">
       <div className="Main__header">
@@ -97,7 +57,7 @@ export default function Main() {
           <i className="fas fa-plus"></i>
         </div>
       </div>
-      <Cage state={state} setState={setState} />
+      <Cage />
     </div>
   );
 }

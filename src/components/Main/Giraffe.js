@@ -1,29 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Giraffe.scss';
-import Motilda from '../img/Motilda.png';
+import Motilda from '../../img/Motilda.png';
 import GiraffeEdit from './GiraffeEdit';
 import EditMenu from './EditMenu';
+import { StoreContext } from '../../service/store';
 
 export default function Giraffe(props) {
-  const [toggleMenu, setToggleMenu] = useState(false);
-  const [edit, setEdit] = useState(false);
+  const {
+    toggleEditMenu: [toggleMenu, setToggleMenu],
+    edit: [edit],
+  } = React.useContext(StoreContext);
 
   function toggleEditMenu() {
     setToggleMenu((toggleMenu) => !toggleMenu);
   }
 
   let menu;
-  if (toggleMenu)
-    menu = (
-      <EditMenu
-        toggleMenu={toggleMenu}
-        setToggleMenu={setToggleMenu}
-        deleteCard={props.deleteCard}
-        id={props.id}
-        edit={edit}
-        setEdit={setEdit}
-      />
-    );
+  if (toggleMenu) menu = <EditMenu />;
 
   if (edit)
     return (
@@ -37,10 +30,6 @@ export default function Giraffe(props) {
         color={props.color}
         diet={props.diet}
         temper={props.temper}
-        state={props.state}
-        setState={props.setState}
-        edit={edit}
-        setEdit={setEdit}
       />
     );
   return (

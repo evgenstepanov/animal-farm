@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './GiraffeEdit.scss';
-import Motilda from '../img/Motilda.png';
+import Motilda from '../../img/Motilda.png';
 
 export default function GiraffeEdit(props) {
   const [input, setInput] = useState({
