@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import './GiraffeEdit.scss';
 import Motilda from '../../img/Motilda.png';
+import { StoreContext } from '../../service/store';
 
 export default function GiraffeEdit(props) {
+  const {
+    state: [state, setState],
+  } = React.useContext(StoreContext);
+  
   const [input, setInput] = useState({
     name: props.name,
     gender: props.gender,
@@ -47,14 +52,13 @@ export default function GiraffeEdit(props) {
   }
 
   function saveChanges() {
-    let arr = props.state.slice().map((i) => {
+    let arr = state.slice().map((i) => {
       if (i.id === props.id) {
         return Object.assign({}, i, input);
       } else return i;
     });
-    console.log(arr);
     props.setEdit(false);
-    props.setState(arr);
+    setState(arr);
   }
 
   return (

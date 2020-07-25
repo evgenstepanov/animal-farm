@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 export const StoreContext = React.createContext(null);
 
 export default ({ children }) => {
@@ -25,19 +25,13 @@ export default ({ children }) => {
     },
   ];
 
-  const [state, setState] = React.useState(firstState);
-  const [toggleMenu, setToggleMenu] = useState(false);
-  const [edit, setEdit] = useState(false);
+  const [state, setState] = useState(firstState);
 
   const store = {
     state: [state, setState],
-    toggleEditMenu: [toggleMenu, setToggleMenu],
-    edit: [edit, setEdit],
   };
 
   return (
     <StoreContext.Provider value={store}>{children}</StoreContext.Provider>
   );
 };
-
-// const [state, setState] = useState();
