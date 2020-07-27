@@ -5,45 +5,16 @@ import GiraffeEdit from './GiraffeEdit';
 import EditMenu from './EditMenu';
 import { StoreContext } from '../../service/store';
 
-export default function Giraffe({ id, features }) {
-  const {
-    state: [state, setState],
-  } = React.useContext(StoreContext);
-  // console.log(state);
-  // let features = state.filter((i) => i.id === id)[0];
+export default function Giraffe({ features }) {
+  const { toggleEditMenu } = React.useContext(StoreContext);
 
-  function toggleEditMenu() {
-    let arr = state.slice().map((item) => {
-      if (item.id === id) {
-        item.menuIsOpen = !item.menuIsOpen;
-        return item;
-      }
-      return item;
-    });
-    setState(arr);
-  }
+  let menu = features.menuIsOpen ? <EditMenu id={features.id} /> : null;
 
-  let menu;
-  if (features.menuIsOpen)
-    menu = <EditMenu toggleEditMenu={toggleEditMenu} id={id} />;
-
-  if (features.editMode)
-    return (
-      <GiraffeEdit
-        key={features.id}
-        id={features.id}
-        name={features.name}
-        gender={features.gender}
-        weight={features.weight}
-        height={features.height}
-        color={features.color}
-        diet={features.diet}
-        temper={features.temper}
-      />
-    );
-  return (
+  return !features.editMode ? (
+    <GiraffeEdit features={features} />
+  ) : (
     <li className="Giraffe">
-      <div className="edit" onClick={toggleEditMenu}>
+      <div className="edit" onClick={() => toggleEditMenu(features.id)}>
         <i className="fas fa-ellipsis-h"></i>
       </div>
       {menu}
