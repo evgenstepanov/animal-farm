@@ -2,15 +2,12 @@ import React from 'react';
 import { StoreContext } from '../../service/store';
 import './EditMenu.scss';
 
-export default function EditMenu({id}) {
+export default function EditMenu({ id }) {
   const {
     state: [state, setState],
+    toggleEditMenu,
+    toggleEditMode,
   } = React.useContext(StoreContext);
-
-  function editCard() {
-    // setEdit(!props.edit);
-    // setToggleMenu(!props.toggleMenu);
-  }
 
   function deleteCard(id) {
     setState(state.slice().filter((i) => i.id !== id));
@@ -18,7 +15,14 @@ export default function EditMenu({id}) {
 
   return (
     <div className="EditMenu">
-      <button autoFocus className="button EditMenu__edit" onClick={editCard}>
+      <button
+        autoFocus
+        className="button EditMenu__edit"
+        onClick={() => {
+          toggleEditMenu(id);
+          toggleEditMode(id);
+        }}
+      >
         <i className="EditMenu__icon fas fa-pencil-alt"></i>Редактировать
       </button>
       <button
