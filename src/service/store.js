@@ -28,11 +28,24 @@ export default ({ children }) => {
       editMode: false,
     },
   ];
-
   const [state, setState] = useState(firstState);
+
+  function toggleEditMenu(id) {
+    let arr = state.slice().map((item) => {
+      if (item.id === id) {
+        item.menuIsOpen = !item.menuIsOpen;
+        return item;
+      }
+      return item;
+    });
+    setState(arr);
+  }
+
+  
 
   const store = {
     state: [state, setState],
+    toggleEditMenu: toggleEditMenu,
   };
 
   return (
