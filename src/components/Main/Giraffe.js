@@ -10,7 +10,7 @@ export default function Giraffe({ features }) {
 
   let menu = features.menuIsOpen ? <EditMenu id={features.id} /> : null;
 
-  return !features.editMode ? (
+  return features.editMode ? (
     <GiraffeEdit features={features} />
   ) : (
     <li className="Giraffe">
