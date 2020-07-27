@@ -11,7 +11,7 @@ export default function Cage() {
   return (
     <ul className="Cage">
       {state.map((item) => (
-        <Giraffe key={item.id} id={item.id} features={item}/>
+        <Giraffe key={item.id} features={item}/>
       ))}
     </ul>
   );
