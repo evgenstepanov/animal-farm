@@ -14,6 +14,7 @@ export default ({ children }) => {
       temper: 'Кокетка',
       menuIsOpen: false,
       editMode: false,
+      saveIsDisable: false,
     },
     {
       id: 2,
@@ -26,6 +27,7 @@ export default ({ children }) => {
       temper: 'Страсть',
       menuIsOpen: false,
       editMode: false,
+      saveIsDisable: false,
     },
   ];
   const [state, setState] = useState(firstState);
