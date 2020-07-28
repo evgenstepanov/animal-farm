@@ -41,11 +41,21 @@ export default ({ children }) => {
     setState(arr);
   }
 
-  
+  function toggleEditMode(id) {
+    let arr = state.slice().map((item) => {
+      if (item.id === id) {
+        item.editMode = !item.editMode;
+        return item;
+      }
+      return item;
+    });
+    setState(arr);
+  }
 
   const store = {
     state: [state, setState],
-    toggleEditMenu: toggleEditMenu,
+    toggleEditMenu,
+    toggleEditMode,
   };
 
   return (
