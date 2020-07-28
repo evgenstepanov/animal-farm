@@ -4,6 +4,7 @@ import Cage from './Cage';
 import CageName from './CageName';
 import { StoreContext } from '../../service/store';
 import mailLogo from '../../img/mail-logo.svg';
+import Capacity from './Capacity';
 
 export default function Main() {
   const {
@@ -63,6 +64,7 @@ export default function Main() {
         </div>
       </div>
       <Cage />
+      <Capacity />
     </div>
   );
 }
