@@ -32,29 +32,48 @@ export default function GiraffeEdit({ features }) {
     setInput(Object.assign({}, input, { [name]: value }));
   }
 
+  function enableSaveButton() {
+    if (features.saveIsDisable) {
+      let arr = state.slice().map((item) => {
+        if (item.id === features.id) {
+          return Object.assign({}, item, { saveIsDisable: false });
+        }
+        return item;
+      });
+      setState(arr);
+    }
+  }
+
   function handlerInput(e) {
     const target = e.target;
     switch (target.name) {
       case 'name':
         combineState(target.name, target.value);
+        enableSaveButton();
         break;
       case 'gender':
         combineState(target.name, target.value);
+        enableSaveButton();
         break;
       case 'weight':
         combineState(target.name, target.value);
+        enableSaveButton();
         break;
       case 'height':
         combineState(target.name, target.value);
+        enableSaveButton();
         break;
       case 'color':
         combineState(target.name, target.value);
+        enableSaveButton();
         break;
       case 'diet':
         combineState(target.name, target.value);
+        enableSaveButton();
         break;
       case 'temper':
         combineState(target.name, target.value);
+        enableSaveButton();
         break;
       default:
         break;
@@ -153,6 +172,7 @@ export default function GiraffeEdit({ features }) {
         onClick={() => {
           saveChanges(features.id);
         }}
+        disabled={features.saveIsDisable}
       />
     </li>
   );
