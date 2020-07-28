@@ -87,6 +87,7 @@ export default function GiraffeEdit({ features }) {
       </div>
       <img className="Giraffe-edit__foto" src={Motilda} alt="Motilda" />
       <input
+        autoFocus
         name="name"
         type="text"
         className="Giraffe-edit__name"
