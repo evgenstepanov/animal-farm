@@ -22,6 +22,7 @@ export default function Main() {
       temper: '',
       menuIsOpen: false,
       editMode: true,
+      saveIsDisable: true,
     };
     setState([newCard, ...state]);
   }
