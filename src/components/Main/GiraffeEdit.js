@@ -3,11 +3,11 @@ import './GiraffeEdit.scss';
 import Motilda from '../../img/Motilda.png';
 import { StoreContext } from '../../service/store';
 
-export default function GiraffeEdit({features}) {
+export default function GiraffeEdit({ features }) {
   const {
     state: [state, setState],
   } = React.useContext(StoreContext);
-  
+
   const [input, setInput] = useState({
     name: features.name,
     gender: features.gender,
@@ -16,7 +16,17 @@ export default function GiraffeEdit({features}) {
     color: features.color,
     diet: features.diet,
     temper: features.temper,
+    editMode: false,
   });
+
+  function saveChanges(id) {
+    let arr = state.slice().map((i) => {
+      if (i.id === id) {
+        return Object.assign({}, i, input);
+      } else return i;
+    });
+    setState(arr);
+  }
 
   function combineState(name, value) {
     setInput(Object.assign({}, input, { [name]: value }));
@@ -49,16 +59,6 @@ export default function GiraffeEdit({features}) {
       default:
         break;
     }
-  }
-
-  function saveChanges() {
-    let arr = state.slice().map((i) => {
-      if (i.id === features.id) {
-        return Object.assign({}, i, input);
-      } else return i;
-    });
-    features.setEdit(false);
-    setState(arr);
   }
 
   return (
@@ -150,7 +150,9 @@ export default function GiraffeEdit({features}) {
         type="button"
         className="Giraffe-edit__btn-save"
         value="Сохранить"
-        onClick={saveChanges}
+        onClick={() => {
+          saveChanges(features.id);
+        }}
       />
     </li>
   );
