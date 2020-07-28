@@ -113,3 +113,7 @@
   font-family: 'Roboto', sans-serif;
   cursor: pointer;
 }
+.Giraffe-edit__btn-save[disabled] {
+  background-color: #b4b4b4;
+  font-weight: 300;
+}
