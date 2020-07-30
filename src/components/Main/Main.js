@@ -9,23 +9,26 @@ import Capacity from './Capacity';
 export default function Main() {
   const {
     state: [state, setState],
+    capacity: [capacity],
   } = React.useContext(StoreContext);
 
   function addNewItem() {
-    let newCard = {
-      id: makeId(),
-      name: 'Имя',
-      gender: '-',
-      weight: '-',
-      height: '-',
-      color: '',
-      diet: '',
-      temper: '',
-      menuIsOpen: false,
-      editMode: true,
-      saveIsDisable: true,
-    };
-    setState([newCard, ...state]);
+    if (state.length < capacity) {
+      let newCard = {
+        id: makeId(),
+        name: 'Имя',
+        gender: '-',
+        weight: '-',
+        height: '-',
+        color: '',
+        diet: '',
+        temper: '',
+        menuIsOpen: false,
+        editMode: true,
+        saveIsDisable: true,
+      };
+      setState([newCard, ...state]);
+    }
   }
 
   function makeId() {
