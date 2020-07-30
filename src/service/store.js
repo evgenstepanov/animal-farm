@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 export const StoreContext = React.createContext(null);
 
 export default ({ children }) => {
+  const [capacity, setCapacity] = useState(6);
+
   const firstState = [
     {
       id: 1,
@@ -56,6 +58,7 @@ export default ({ children }) => {
 
   const store = {
     state: [state, setState],
+    capacity: [capacity, setCapacity],
     toggleEditMenu,
     toggleEditMode,
   };
