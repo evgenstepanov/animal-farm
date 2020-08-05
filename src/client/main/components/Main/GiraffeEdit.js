@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './GiraffeEdit.scss';
 import Motilda from '../../img/Motilda.png';
-import { StoreContext } from '../../service/store';
+import { StoreContext } from '../../context/store';
 
 export default function GiraffeEdit({ features }) {
   const {

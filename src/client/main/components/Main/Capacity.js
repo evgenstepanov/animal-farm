@@ -1,6 +1,6 @@
 import React from 'react';
 import './Capacity.scss';
-import { StoreContext } from '../../service/store';
+import { StoreContext } from '../../context/store';
 
 export default function Capacity() {
   const {

@@ -3,7 +3,7 @@ import './Giraffe.scss';
 import Motilda from '../../img/Motilda.png';
 import GiraffeEdit from './GiraffeEdit';
 import EditMenu from './EditMenu';
-import { StoreContext } from '../../service/store';
+import { StoreContext } from '../../context/store';
 
 export default function Giraffe({ features }) {
   const { toggleEditMenu } = React.useContext(StoreContext);

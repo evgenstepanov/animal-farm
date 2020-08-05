@@ -2,7 +2,7 @@ import React from 'react';
 import './Main.scss';
 import Cage from './Cage';
 import CageName from './CageName';
-import { StoreContext } from '../../service/store';
+import { StoreContext } from '../../context/store';
 import mailLogo from '../../img/mail-logo.svg';
 import Capacity from './Capacity';
 
