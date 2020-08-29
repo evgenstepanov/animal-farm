@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+.App-wrapper {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  background-color: #668663;
+  padding: 12px 13px 12px 32px;
+  border-radius: 35px;
+}
+.App__footer {
+  padding-right: 25px;
+}
+::-webkit-scrollbar-track {
+  margin-left: 20px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #668663;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
