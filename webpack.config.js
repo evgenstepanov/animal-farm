@@ -1,103 +1,83 @@
-const path = require("path");
-const webpack = require('webpack')
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-const html = ['index']
-
-const htmlArray = html.map(name => {
-    return new HtmlWebPackPlugin({
-        filename: `${name}.html`,
-        template: `${__dirname}/public/${name}.html`,
-        templateParameters: () => {
-            return { 'foo': process.env.NODE_ENV == 'production' ? 'production' : 'development' }
-        },
-        hash: true,
-        inject: true,
-        chunks: [name]
-    })
-})
 module.exports = {
-    devtool: 'cheap-module-source-map',
-    stats: {
-        all: false,
-        timings: true,
-        cached: true
+  mode: process.env.NODE_ENV == 'production' ? 'production' : 'development',
+  entry: {
+    index: [
+      'webpack-hot-middleware/client',
+      'react-hot-loader/patch',
+      './src/client',
+    ],
+  },
+  output: {
+    path: path.join(__dirname, '/dist'),
+    filename: '[name].js',
+  },
+  resolve: {
+    alias: {
+      'react-dom': '@hot-loader/react-dom',
     },
-    optimization: {
-        splitChunks: {
-            chunks: 'async',
-            minSize: 30000,
-            maxSize: 0,
-            minChunks: 3,
-            maxAsyncRequests: 6,
-            maxInitialRequests: 4,
-            automaticNameDelimiter: '~',
-            cacheGroups: {
-                defaultVendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    priority: -10
-                },
-                default: {
-                    minChunks: 2,
-                    priority: -20,
-                    reuseExistingChunk: true
-                }
-            }
-        }
-    },
-    mode: process.env.NODE_ENV == 'production' ? 'production' : 'development',
-    devServer: {
-        contentBase: './public',
-        hot: true,
-    },
-    entry: {
-        index: ['webpack-hot-middleware/client', 'react-hot-loader/patch', './src/client/main']
-    },
-    output: {
-        path: path.join(__dirname, "/dist/client"),
-        filename: "[name].bundle.js",
-    },
-    resolve: {
-        alias: {
-            'react-dom': '@hot-loader/react-dom',
-        },
-        extensions: ['.js', '.jsx']
-    },
-    module: {
-        rules: [{
-            test: /\.jsx?$/,
-            exclude: /node_modules/,
-            use: [
-                // 'cache-loader' , 
-                {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-react'],
-                        plugins: ["react-hot-loader/babel"]
-                    }
-                },
-            ]
-        },
-        {
-            test: /\.(png|jpg|gif|svg)$/,
-            use: [
-                // 'cache-loader',
-                {
-                    loader: 'file-loader?name=./image/[hash].[ext]'
-                },
-
-            ]
-        },
-        {
-            test: /\.css$/i,
-            use: ['style-loader', 'css-loader'],
-        },
-        ]
-    },
-    plugins: [
-        // new CleanWebpackPlugin(),
-        
-        new webpack.HotModuleReplacementPlugin(),
-        ...htmlArray,
-    ]
-}
+    extensions: ['.js', '.jsx'],
+  },
+  devServer: {
+    contentBase: './public',
+    hot: true,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-react'],
+              plugins: ['react-hot-loader/babel'],
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader?name=./image/[hash].[ext]',
+          },
+        ],
+      },
+      {
+        test: /\.css$/i,
+        use: [
+          {
+            loader: 'style-loader',
+            options: { injectType: 'singletonStyleTag' },
+          },
+          'css-loader',
+        ],
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          {
+            loader: 'style-loader',
+            options: { injectType: 'singletonStyleTag' },
+          },
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+    ],
+  },
+  plugins: [
+    new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new HtmlWebPackPlugin({
+      template: './public/index.html',
+    }),
+  ],
+};
