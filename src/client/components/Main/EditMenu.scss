@@ -1,0 +1,38 @@
+.EditMenu {
+  background-color: #668663;
+  padding: 15px 13px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 40px;
+  right: 15px;
+
+}
+.EditMenu__icon {
+  margin-right: 10px;
+  font-size: 16px;
+}
+.EditMenu__edit {
+  margin-bottom: 5px;
+}
+
+.button {
+  text-align: left;
+  border: none;
+  background-color: #668663;
+  padding: 10px 15px;
+  border-radius: 25px;
+  color: #fff;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 200;
+  cursor: pointer;
+}
+.button:focus {
+  background-color: #567354;
+  outline: none;
+}
+.EditMenu.hidden {
+  display: none;
+}
