@@ -1,0 +1,108 @@
+.Giraffe-edit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background-color: #f3dbc7;
+  padding: 35px 24px 21px;
+  margin-right: 30px;
+  border-radius: 25px;
+  color: #435f40;
+  font-weight: bold;
+  box-shadow: 0px 0px 14px 0px #4e4d4d;
+}
+.edit {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 18px;
+}
+.Giraffe-edit__foto {
+  border-radius: 50%;
+  margin-bottom: 26px;
+}
+.Giraffe-edit__name {
+  padding: 0;
+  outline: none;
+  border: none;
+  background-color: #f3dbc7;
+  max-width: 180px;
+  font-size: 22px;
+  margin-bottom: 28px;
+  text-align: center;
+  color: #435f40;
+  font-weight: 700;
+}
+.Giraffe-edit__name::-webkit-input-placeholder {
+  color: #435f40;
+}
+.Giraffe-edit__name::-moz-placeholder {
+  color: #435f40;
+}
+
+.features-input {
+  width: 189px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 17px;
+  background-color: #dcb18b;
+  border-radius: 18px;
+  margin-bottom: 21px;
+  color: #333333;
+}
+
+.Giraffe-Edit__features-line-item {
+  font-weight: 300;
+  font-size: 15px;
+  margin-bottom: 14px;
+}
+
+.Giraffe-Edit__features-line-item--last {
+  margin-bottom: 0px;
+}
+.Giraffe-Edit__features-line {
+  align-self: flex-start;
+  padding-left: 9px;
+}
+.features-line__type {
+  font-weight: bold;
+}
+.Giraffe-edit__line {
+  border: none;
+  color: #333333;
+  outline: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  background-color: #f3dbc7;
+  width: 105px;
+}
+.features-input__item {
+  border: none;
+  outline: none;
+  width: 30px;
+  background-color: #dcb18b;
+  color: #110f0f;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+.Giraffe-edit__btn-save {
+  border: none;
+  outline: none;
+  background-color: #668663;
+  color: #fff;
+  margin-top: 18px;
+  padding: 9px 25px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+}
+.Giraffe-edit__btn-save[disabled] {
+  background-color: #b4b4b4;
+  font-weight: 300;
+}
