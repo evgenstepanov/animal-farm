@@ -7,11 +7,12 @@ export default ({ children }) => {
   const [capacity, setCapacity] = useState(6);
   const [idCardMenu, setIdCardMenu] = useState('');
   const [idCardEditMode, setIdCardEditMode] = useState('');
+  const [newCard, setNewCard] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios('http://localhost:8080/api/giraffe');
-      setState(result.data);
+      setState(result.data.reverse());
     };
     fetchData();
   }, []);
@@ -21,6 +22,7 @@ export default ({ children }) => {
     capacity: [capacity, setCapacity],
     idCardMenu: [idCardMenu, setIdCardMenu],
     idCardEditMode: [idCardEditMode, setIdCardEditMode],
+    newCard: [newCard, setNewCard],
   };
 
   return (
