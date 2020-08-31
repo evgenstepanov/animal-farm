@@ -20,39 +20,38 @@ export default function GiraffeEdit({ features, editMode, setEditMode }) {
     temper: features.temper,
   });
 
-  function saveChanges(id) {
-    const changeData = id
-      ? async () => {
-          const result = await axios.put(
-            `http://localhost:8080/api/giraffe/${id}`,
-            input
-          );
-          if (result.status === 200) {
-            let arr = state.slice().map((item) => {
-              if (item._id === id) {
-                return { ...item, ...input };
-              } else return item;
-            });
-            setState(arr);
-            setEditMode(!editMode);
-          }
-        }
-      : async () => {
-          const result = await axios.post(
-            `http://localhost:8080/api/giraffe`,
-            input
-          );
-          let newState = [result.data, ...state];
-          setState(newState);
-          setNewCard(!newCard);
-        };
-    changeData();
-  }
-
-  function handlerInput(e) {
+  const handlerInput = (e) => {
     const target = e.target;
     setInput({ ...input, ...{ [target.name]: target.value } });
-  }
+  };
+
+  const saveChanges = (id) => {
+    const changeData = id ? create : () => update(id);
+    changeData();
+  };
+
+  const update = async (id) => {
+    const result = await axios.put(
+      `http://localhost:8080/api/giraffe/${id}`,
+      input
+    );
+    if (result.status === 200) {
+      let arr = state.slice().map((item) => {
+        if (item._id === id) {
+          return { ...item, ...input };
+        } else return item;
+      });
+      setState(arr);
+      setEditMode(!editMode);
+    }
+  };
+
+  const create = async () => {
+    const result = await axios.post(`http://localhost:8080/api/giraffe`, input);
+    let newState = [result.data, ...state];
+    setState(newState);
+    setNewCard(!newCard);
+  };
 
   return (
     <li className="Giraffe-edit">
