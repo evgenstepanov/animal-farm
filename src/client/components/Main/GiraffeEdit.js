@@ -7,6 +7,7 @@ import axios from 'axios';
 export default function GiraffeEdit({ features, editMode, setEditMode }) {
   const {
     state: [state, setState],
+    newCard: [newCard, setNewCard],
   } = React.useContext(StoreContext);
 
   const [input, setInput] = useState({
@@ -20,21 +21,31 @@ export default function GiraffeEdit({ features, editMode, setEditMode }) {
   });
 
   function saveChanges(id) {
-    const changeData = async () => {
-      const result = await axios.put(
-        `http://localhost:8080/api/giraffe/${id}`,
-        input
-      );
-      if (result.status === 200) {
-        let arr = state.slice().map((item) => {
-          if (item._id === id) {
-            return { ...item, ...input };
-          } else return item;
-        });
-        setState(arr);
-        setEditMode(!editMode);
-      }
-    };
+    const changeData = id
+      ? async () => {
+          const result = await axios.put(
+            `http://localhost:8080/api/giraffe/${id}`,
+            input
+          );
+          if (result.status === 200) {
+            let arr = state.slice().map((item) => {
+              if (item._id === id) {
+                return { ...item, ...input };
+              } else return item;
+            });
+            setState(arr);
+            setEditMode(!editMode);
+          }
+        }
+      : async () => {
+          const result = await axios.post(
+            `http://localhost:8080/api/giraffe`,
+            input
+          );
+          let newState = [result.data, ...state];
+          setState(newState);
+          setNewCard(!newCard);
+        };
     changeData();
   }
 
