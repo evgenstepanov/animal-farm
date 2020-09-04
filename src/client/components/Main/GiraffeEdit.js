@@ -9,7 +9,7 @@ export default function GiraffeEdit({ features, editMode, setEditMode }) {
     state: [state, setState],
     newCard: [newCard, setNewCard],
   } = React.useContext(StoreContext);
-  const [isDisable, setIsDisable] = useState(true);
+  const [isDisable, setIsDisable] = useState(features._id ? false : true);
 
   const [input, setInput] = useState({
     name: features.name,
