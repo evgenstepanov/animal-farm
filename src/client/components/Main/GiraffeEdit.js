@@ -9,6 +9,7 @@ export default function GiraffeEdit({ features, editMode, setEditMode }) {
     state: [state, setState],
     newCard: [newCard, setNewCard],
   } = React.useContext(StoreContext);
+  const [isDisable, setIsDisable] = useState(true);
 
   const [input, setInput] = useState({
     name: features.name,
@@ -22,12 +23,8 @@ export default function GiraffeEdit({ features, editMode, setEditMode }) {
 
   const handlerInput = (e) => {
     const target = e.target;
+    if (isDisable) setIsDisable(!isDisable);
     setInput({ ...input, ...{ [target.name]: target.value } });
-  };
-
-  const saveChanges = (id) => {
-    const changeData = id ? create : () => update(id);
-    changeData();
   };
 
   const update = async (id) => {
@@ -36,8 +33,8 @@ export default function GiraffeEdit({ features, editMode, setEditMode }) {
       input
     );
     if (result.status === 200) {
-      let arr = state.slice().map((item) => {
-        if (item._id === id) {
+      let arr = state.map((item) => {
+        if (item._id === features._id) {
           return { ...item, ...input };
         } else return item;
       });
@@ -51,6 +48,11 @@ export default function GiraffeEdit({ features, editMode, setEditMode }) {
     let newState = [result.data, ...state];
     setState(newState);
     setNewCard(!newCard);
+  };
+
+  const saveChanges = (id) => {
+    const changeData = id ? (id) => update(id) : create;
+    changeData(id);
   };
 
   return (
@@ -146,7 +148,7 @@ export default function GiraffeEdit({ features, editMode, setEditMode }) {
         onClick={() => {
           saveChanges(features._id);
         }}
-        disabled={features.saveIsDisable}
+        disabled={isDisable}
       />
     </li>
   );
