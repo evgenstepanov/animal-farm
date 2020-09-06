@@ -19,6 +19,8 @@ mongoose.connect(
 );
 
 app.use(cors());
+app.use('/images', express.static(path.join(__dirname, '../client/img')));
+app.use('/uploads', express.static(path.join(__dirname, '../../uploads')));
 
 require('./routes/animalRoutes')(app);
 
