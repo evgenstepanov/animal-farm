@@ -3,18 +3,19 @@ import { StoreContext } from '../../context/store';
 import './EditMenu.scss';
 import axios from 'axios';
 
-export default function EditMenu({ id, editMode, setEditMode }) {
+export default function EditMenu({ id }) {
   const {
     state: [state, setState],
-    idCardMenu: [idCardMenu, setIdCardMenu],
+    idCardMenu: [, setIdCardMenu],
+    idCardEditMode: [, setIdCardEditMode],
   } = React.useContext(StoreContext);
 
   const openEditMode = () => {
-    setEditMode(!editMode);
+    setIdCardEditMode(id);
     setIdCardMenu('');
   };
 
-  const deleteCard = (id) => {
+  const deleteCard = () => {
     const deleteData = async () => {
       const result = await axios.delete(
         `http://localhost:8080/api/giraffe/${id}`
@@ -31,18 +32,11 @@ export default function EditMenu({ id, editMode, setEditMode }) {
       <button
         autoFocus
         className="button EditMenu__edit"
-        onClick={() => {
-          openEditMode(id);
-        }}
+        onClick={openEditMode}
       >
         <i className="EditMenu__icon fas fa-pencil-alt"></i>Редактировать
       </button>
-      <button
-        className="button EditMenu__delete"
-        onClick={() => {
-          deleteCard(id);
-        }}
-      >
+      <button className="button EditMenu__delete" onClick={deleteCard}>
         <i className="EditMenu__icon far fa-trash-alt"></i>Удалить
       </button>
     </div>
