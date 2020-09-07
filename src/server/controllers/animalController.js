@@ -48,7 +48,7 @@ module.exports = {
   },
   deleteAnimalById: async (req, res) => {
     try {
-      const animal = await Animal.remove({ _id: req.params.id });
+      const animal = await Animal.deleteOne({ _id: req.params.id });
       res.json(animal);
     } catch (err) {
       res.json({ message: err });
