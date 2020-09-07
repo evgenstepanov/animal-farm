@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './Giraffe.scss';
-import Motilda from '../../img/Motilda.png';
 import GiraffeEdit from './GiraffeEdit';
 import EditMenu from './EditMenu';
 import { StoreContext } from '../../context/store';
@@ -8,10 +7,10 @@ import { StoreContext } from '../../context/store';
 export default function Giraffe({ features }) {
   const {
     idCardMenu: [idCardMenu, setIdCardMenu],
-    idCardEditMode: [idCardEditMode, setIdCardEditMode],
+    idCardEditMode: [idCardEditMode],
+    newCard: [newCard],
   } = React.useContext(StoreContext);
   const [menu, setMenu] = useState(false);
-  const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
     if ((idCardMenu !== features._id && menu) || idCardMenu === features._id) {
@@ -23,27 +22,25 @@ export default function Giraffe({ features }) {
     idCardMenu !== id ? setIdCardMenu(id) : setMenu(!menu);
   };
 
-  return editMode ? (
-    <GiraffeEdit
-      features={features}
-      editMode={editMode}
-      setEditMode={setEditMode}
-    />
+  return idCardEditMode === features._id ? (
+    <GiraffeEdit features={features} />
   ) : (
     <li className="Giraffe">
       <div className="edit" onClick={() => toggleEditMenu(features._id)}>
         <i className="fas fa-ellipsis-h"></i>
       </div>
-      {menu ? (
-        <EditMenu
-          id={features._id}
-          editMode={editMode}
-          setEditMode={setEditMode}
-          menu={menu}
-          setMenu={setMenu}
-        />
-      ) : null}
-      <img className="foto" src={Motilda} alt="Motilda" />
+      {menu ? <EditMenu id={features._id} /> : null}
+      <div className="foto">
+        {features.image ? (
+          <img
+            className="foto__img"
+            src={`uploads/${features.image + '.jpg'}`}
+            alt={features.image}
+          />
+        ) : (
+          <i class="foto__empty fas fa-camera"></i>
+        )}
+      </div>
       <h2 className="name">{features.name}</h2>
       <div className="icons">
         <div className="icons__item">

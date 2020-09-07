@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './GiraffeEdit.scss';
-import Motilda from '../../img/Motilda.png';
 import { StoreContext } from '../../context/store';
 import axios from 'axios';
 
-export default function GiraffeEdit({ features, editMode, setEditMode }) {
+export default function GiraffeEdit({ features }) {
   const {
     state: [state, setState],
     newCard: [newCard, setNewCard],
+    idCardEditMode: [, setIdCardEditMode],
   } = React.useContext(StoreContext);
   const [isDisable, setIsDisable] = useState(features._id ? false : true);
 
@@ -19,9 +19,10 @@ export default function GiraffeEdit({ features, editMode, setEditMode }) {
     color: features.color,
     diet: features.diet,
     temper: features.temper,
+    image: features.image,
   });
 
-  const handlerInput = (e) => {
+  const handleInput = (e) => {
     const target = e.target;
     if (isDisable) setIsDisable(!isDisable);
     setInput({ ...input, ...{ [target.name]: target.value } });
@@ -39,7 +40,7 @@ export default function GiraffeEdit({ features, editMode, setEditMode }) {
         } else return item;
       });
       setState(arr);
-      setEditMode(!editMode);
+      setIdCardEditMode('');
     }
   };
 
@@ -57,17 +58,24 @@ export default function GiraffeEdit({ features, editMode, setEditMode }) {
 
   return (
     <li className="Giraffe-edit">
-      <div className="edit">
-        <i className="fas fa-ellipsis-h"></i>
+      <div className="Giraffe-edit__foto">
+        {input.image ? (
+          <img
+            className="Giraffe-edit__foto-img"
+            src={`uploads/${input.image + '.jpg'}`}
+            alt={input.image}
+          />
+        ) : (
+          <i class="Giraffe-edit__foto-empty fas fa-camera"></i>
+        )}
       </div>
-      <img className="Giraffe-edit__foto" src={Motilda} alt="Motilda" />
       <input
         autoFocus
         name="name"
         type="text"
         className="Giraffe-edit__name"
         value={input.name}
-        onChange={handlerInput}
+        onChange={handleInput}
       />
       <div className="icons">
         <div className="icons__item">
@@ -86,21 +94,21 @@ export default function GiraffeEdit({ features, editMode, setEditMode }) {
           type="text"
           className="features-input__item gender"
           value={input.gender}
-          onChange={handlerInput}
+          onChange={handleInput}
         />
         <input
           name="weight"
           type="text"
           className="features-input__item "
           value={input.weight}
-          onChange={handlerInput}
+          onChange={handleInput}
         />
         <input
           name="height"
           type="text"
           className="features-input__item"
           value={input.height}
-          onChange={handlerInput}
+          onChange={handleInput}
         />
       </div>
       <div className="Giraffe-Edit__features-line">
@@ -113,7 +121,7 @@ export default function GiraffeEdit({ features, editMode, setEditMode }) {
             type="text"
             className="Giraffe-edit__line"
             value={input.color}
-            onChange={handlerInput}
+            onChange={handleInput}
           />
         </div>
         <div className="Giraffe-Edit__features-line-item">
@@ -125,7 +133,7 @@ export default function GiraffeEdit({ features, editMode, setEditMode }) {
             type="text"
             className="Giraffe-edit__line"
             value={input.diet}
-            onChange={handlerInput}
+            onChange={handleInput}
           />
         </div>
         <div className="Giraffe-Edit__features-line-item Giraffe-Edit__features-line-item--last">
@@ -137,7 +145,7 @@ export default function GiraffeEdit({ features, editMode, setEditMode }) {
             type="text"
             className="Giraffe-edit__line"
             value={input.temper}
-            onChange={handlerInput}
+            onChange={handleInput}
           />
         </div>
       </div>

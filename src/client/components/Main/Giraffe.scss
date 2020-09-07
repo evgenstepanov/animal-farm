@@ -1,66 +1,83 @@
-.Giraffe{
+.Giraffe {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  background-color: #F3DBC7;
+  background-color: #f3dbc7;
   padding: 35px 24px 39px;
   margin-right: 30px;
   border-radius: 25px;
-  color: #435F40;
+  color: #435f40;
   font-weight: bold;
 }
 
-.foto{
+.foto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
   margin-bottom: 27px;
+  background-color: rgb(255, 255, 255);
+  width: 145px;
+  height: 145px;
 }
-.name{
+.foto__img {
+  border-radius: 50%;
+  overflow: hidden;
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+}
+.foto__empty {
+  font-size: 48px;
+  color: #d9d9d9;
+}
+.name {
   font-size: 22px;
   padding-bottom: 31px;
   text-align: center;
 }
-.icons{
+.icons {
   display: flex;
   justify-content: space-between;
   font-size: 22px;
   width: 189px;
   margin-bottom: 12px;
-
 }
-.icons__item, .features__item{
+.icons__item,
+.features__item {
   flex: 1 0;
   text-align: center;
 }
-.features{
+.features {
   width: 189px;
   display: flex;
   justify-content: space-between;
   padding: 12px 0;
-  background-color: #DCB18B;
+  background-color: #dcb18b;
   border-radius: 18px;
   margin-bottom: 24px;
   color: #333333;
 }
-.features-line__item{
+.features-line__item {
   font-weight: 300;
   font-size: 15px;
   margin-bottom: 19px;
 }
-.features-line__item--last{
+.features-line__item--last {
   margin-bottom: 0;
 }
-.features-line{
+.features-line {
   align-self: flex-start;
   padding-left: 9px;
 }
-.features-line__type{
+.features-line__type {
   font-weight: bold;
 }
-.features-line__value{
+.features-line__value {
   color: #333333;
 }
-.edit{
+.edit {
   position: absolute;
   right: 20px;
   top: 15px;
