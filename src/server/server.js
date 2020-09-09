@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 app.use(express.json());
 mongoose.Promise = global.Promise;
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb+srv://stepanov:stepanov@cluster0.a38ve.mongodb.net/animal-farm',
+  process.env.MONGODB_URI || 'mongodb://localhost/animal-farm',
   {
     useNewUrlParser: true,
     useFindAndModify: false,
