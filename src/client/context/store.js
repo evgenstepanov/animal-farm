@@ -11,7 +11,7 @@ export default ({ children }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios('http://localhost:8080/api/giraffe');
+      const result = await axios('/api/giraffe');
       setState(result.data.reverse());
     };
     fetchData();

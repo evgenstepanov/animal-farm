@@ -30,7 +30,7 @@ export default function GiraffeEdit({ features }) {
 
   const update = async (id) => {
     const result = await axios.put(
-      `http://localhost:8080/api/giraffe/${id}`,
+      `/api/giraffe/${id}`,
       input
     );
     if (result.status === 200) {
@@ -45,7 +45,7 @@ export default function GiraffeEdit({ features }) {
   };
 
   const create = async () => {
-    const result = await axios.post(`http://localhost:8080/api/giraffe`, input);
+    const result = await axios.post(`/api/giraffe`, input);
     let newState = [result.data, ...state];
     setState(newState);
     setNewCard(!newCard);

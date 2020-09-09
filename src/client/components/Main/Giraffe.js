@@ -38,7 +38,7 @@ export default function Giraffe({ features }) {
             alt={features.image}
           />
         ) : (
-          <i class="foto__empty fas fa-camera"></i>
+          <i className="foto__empty fas fa-camera"></i>
         )}
       </div>
       <h2 className="name">{features.name}</h2>

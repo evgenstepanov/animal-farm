@@ -18,7 +18,7 @@ export default function EditMenu({ id }) {
   const deleteCard = () => {
     const deleteData = async () => {
       const result = await axios.delete(
-        `http://localhost:8080/api/giraffe/${id}`
+        `/api/giraffe/${id}`
       );
       if (result.status === 200) {
         setState(state.slice().filter((i) => i._id !== id));

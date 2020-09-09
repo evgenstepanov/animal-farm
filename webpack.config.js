@@ -5,13 +5,16 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: process.env.NODE_ENV == 'production' ? 'production' : 'development',
-  entry: {
-    index: [
-      'webpack-hot-middleware/client',
-      'react-hot-loader/patch',
-      './src/client',
-    ],
-  },
+  entry:
+    process.env.NODE_ENV == 'production'
+      ? './src/client/index.js'
+      : {
+          index: [
+            'webpack-hot-middleware/client',
+            'react-hot-loader/patch',
+            './src/client',
+          ],
+        },
   output: {
     path: path.join(__dirname, '/dist'),
     filename: '[name].js',
