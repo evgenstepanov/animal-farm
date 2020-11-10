@@ -4,7 +4,7 @@ import App from './components/App';
 import 'reset-css';
 import StoreProvider from './context/store';
 
-ReactDOM.render( 
+ReactDOM.render(
   <React.StrictMode>
     <StoreProvider>
       <App />
@@ -12,4 +12,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-

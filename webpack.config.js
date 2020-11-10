@@ -2,6 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+const { NetlifyPlugin } = require('netlify-webpack-plugin');
 
 module.exports = {
   mode: process.env.NODE_ENV == 'production' ? 'production' : 'development',
@@ -16,6 +18,7 @@ module.exports = {
           ],
         },
   output: {
+    publicPath: '/',
     path: path.join(__dirname, '/dist'),
     filename: '[name].js',
   },
@@ -26,6 +29,7 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
   devServer: {
+    historyApiFallback: true,
     contentBase: './public',
     hot: true,
   },
@@ -45,7 +49,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|jpe?g|gif|svg|webp)$/,
         use: [
           {
             loader: 'file-loader?name=./image/[hash].[ext]',
@@ -78,9 +82,20 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebPackPlugin({
       template: './public/index.html',
+    }),
+    new Dotenv({
+      systemvars: true,
+    }),
+    new NetlifyPlugin({
+      redirects: [
+        {
+          from: '/*',
+          to: '/index.html',
+          status: 200,
+        },
+      ],
     }),
   ],
 };

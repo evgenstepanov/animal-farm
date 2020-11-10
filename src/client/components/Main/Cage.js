@@ -22,9 +22,9 @@ export default function Cage() {
   };
 
   return (
-    <ul className="Cage">
+    <ul className='Cage'>
       {newCard ? <GiraffeEdit features={emptyCard} /> : null}
-      {state.map((features) => (
+      {state.map(features => (
         <Giraffe key={features._id} features={features} />
       ))}
     </ul>

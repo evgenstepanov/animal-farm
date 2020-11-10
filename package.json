@@ -4,10 +4,9 @@
   "description": "",
   "private": "true",
   "scripts": {
-    "start": "set NODE_ENV=production&& npm run built && node src/server/server.js",
-    "built": "npx webpack",
-    "dev": "set NODE_ENV=development&& nodemon ./src/server/server.js --watch ./src/server",
-    "dev2": "set NODE_ENV=development&& nodemon ./src/server/server.js --watch ./src/server && webpack "
+    "build": "set NODE_ENV=production&& npm run webpack && node src/server/server.js",
+    "webpack": "npx webpack",
+    "dev": "set NODE_ENV=development&& nodemon ./src/server/server.js --watch ./src/server"
   },
   "repository": {
     "type": "git",
@@ -25,6 +24,7 @@
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^4.2.2",
+    "dotenv-webpack": "^5.1.0",
     "file-loader": "^6.1.0",
     "html-webpack-plugin": "^4.4.1",
     "node-sass": "^4.14.1",
@@ -40,10 +40,10 @@
     "@hot-loader/react-dom": "^16.13.0",
     "axios": "^0.19.2",
     "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.10.3",
     "multer": "^1.4.2",
+    "netlify-webpack-plugin": "^1.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hot-loader": "^4.12.21",

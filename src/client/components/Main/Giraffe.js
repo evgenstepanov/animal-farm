@@ -18,64 +18,64 @@ export default function Giraffe({ features }) {
     }
   }, [idCardMenu]);
 
-  const toggleEditMenu = (id) => {
+  const toggleEditMenu = id => {
     idCardMenu !== id ? setIdCardMenu(id) : setMenu(!menu);
   };
 
   return idCardEditMode === features._id ? (
     <GiraffeEdit features={features} />
   ) : (
-    <li className="Giraffe">
-      <div className="edit" onClick={() => toggleEditMenu(features._id)}>
-        <i className="fas fa-ellipsis-h"></i>
+    <li className='Giraffe'>
+      <div className='edit' onClick={() => toggleEditMenu(features._id)}>
+        <i className='fas fa-ellipsis-h'></i>
       </div>
       {menu ? <EditMenu id={features._id} /> : null}
-      <div className="foto">
+      <div className='foto'>
         {features.image ? (
           <img
-            className="foto__img"
+            className='foto__img'
             src={`uploads/${features.image + '.jpg'}`}
             alt={features.image}
           />
         ) : (
-          <i className="foto__empty fas fa-camera"></i>
+          <i className='foto__empty fas fa-camera'></i>
         )}
       </div>
-      <h2 className="name">{features.name}</h2>
-      <div className="icons">
-        <div className="icons__item">
-          <i className="fas fa-venus-mars"></i>
+      <h2 className='name'>{features.name}</h2>
+      <div className='icons'>
+        <div className='icons__item'>
+          <i className='fas fa-venus-mars'></i>
         </div>
-        <div className="icons__item">
-          <i className="fas fa-balance-scale"></i>
+        <div className='icons__item'>
+          <i className='fas fa-balance-scale'></i>
         </div>
-        <div className="icons__item">
-          <i className="fas fa-ruler-vertical"></i>
+        <div className='icons__item'>
+          <i className='fas fa-ruler-vertical'></i>
         </div>
       </div>
-      <div className="features">
-        <div className="features__item features__venus">{features.gender}</div>
-        <div className="features__item features__scale">{features.weight}</div>
-        <div className="features__item features__ruler">{features.height}</div>
+      <div className='features'>
+        <div className='features__item features__venus'>{features.gender}</div>
+        <div className='features__item features__scale'>{features.weight}</div>
+        <div className='features__item features__ruler'>{features.height}</div>
       </div>
-      <div className="features-line">
-        <div className="features-line__item">
-          <span className="features-line__type">
+      <div className='features-line'>
+        <div className='features-line__item'>
+          <span className='features-line__type'>
             <strong>Цвет: </strong>
           </span>
-          <span className="features-line__value">{features.color}</span>
+          <span className='features-line__value'>{features.color}</span>
         </div>
-        <div className="features-line__item">
-          <span className="features-line__type">
+        <div className='features-line__item'>
+          <span className='features-line__type'>
             <strong>Диета: </strong>
           </span>
-          <span className="features-line__value">{features.diet}</span>
+          <span className='features-line__value'>{features.diet}</span>
         </div>
-        <div className="features-line__item features-line__item--last">
-          <span className="features-line__type">
+        <div className='features-line__item features-line__item--last'>
+          <span className='features-line__type'>
             <strong>Характер: </strong>
           </span>
-          <span className="features-line__value">{features.temper}</span>
+          <span className='features-line__value'>{features.temper}</span>
         </div>
       </div>
     </li>
