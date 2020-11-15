@@ -25,13 +25,16 @@ app.use('/uploads', express.static(path.join(__dirname, '../../uploads')));
 require('./routes/animalRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
-  app.use('/', express.static(path.join(__dirname, '../../dist')));
+  app.use(express.static(path.join(__dirname, '../../dist')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../../dist', 'index.html'));
+  });
   app.listen(PORT, () => {
     console.log(`Listening port: ${PORT}`);
   });
 } else if (process.env.NODE_ENV === 'development') {
   const webpack = require('webpack');
-  const config = require(path.join(__dirname, '../../webpack.config'));
+  const config = require(path.join(__dirname, '../../webpack.dev'));
   const compiler = webpack(config);
   app.use(
     require('webpack-dev-middleware')(compiler, {
