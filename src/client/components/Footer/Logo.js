@@ -7,7 +7,7 @@ export default function Logo() {
     <a className='logo footer__logo' href='/'>
       <img className='logo__img' src={imgLogo} alt='logo' />
       <div className='logo__title'>
-        <h1 className='logo__title-text'>Ферма fуженных Жирафов</h1>
+        <h1 className='logo__title-text'>Ферма Заслуженных Жирафов</h1>
         <p className='logo__subtitle'>России и СНГ</p>
       </div>
     </a>
